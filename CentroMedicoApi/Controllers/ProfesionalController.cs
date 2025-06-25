@@ -54,31 +54,5 @@ namespace CentroMedicoApi.Controllers
             return NoContent();
         }
 
-        [HttpPut("{id}")]
-        public ActionResult<Profesional> Update(int id, [FromBody] Profesional profesionalActualizado)
-        {
-            var paciente = _profesionalService.GetById(id);
-            if (paciente == null)
-                return NotFound();
-
-            paciente.Nombre = profesionalActualizado.Nombre;
-            paciente.Especialidad = profesionalActualizado.Especialidad;
-            paciente.Matricula = profesionalActualizado.Matricula;
-
-            return Ok(paciente);
-        }
-
-
-        [HttpDelete("{id}")]
-        public ActionResult Delete(int id)
-        {
-            var profesional = _profesionalService.GetById(id);
-            if (profesional == null)
-                return NotFound();
-
-            _profesionalService.Delete(id);
-            return NoContent();
-        }
-
     }
 }

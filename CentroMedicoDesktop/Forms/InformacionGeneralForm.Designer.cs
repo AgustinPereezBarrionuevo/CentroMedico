@@ -85,6 +85,7 @@
             dgvPacientes.GridColor = Color.FromArgb(224, 224, 224);
             dgvPacientes.Location = new Point(6, 7);
             dgvPacientes.Name = "dgvPacientes";
+            dgvPacientes.ReadOnly = true;
             dgvPacientes.Size = new Size(662, 306);
             dgvPacientes.TabIndex = 0;
             // 
@@ -238,7 +239,7 @@
             // salirToolStripMenuItem
             // 
             salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            salirToolStripMenuItem.Size = new Size(180, 22);
+            salirToolStripMenuItem.Size = new Size(96, 22);
             salirToolStripMenuItem.Text = "Salir";
             salirToolStripMenuItem.Click += salirToolStripMenuItem_Click;
             // 
@@ -252,21 +253,21 @@
             // agregarToolStripMenuItem
             // 
             agregarToolStripMenuItem.Name = "agregarToolStripMenuItem";
-            agregarToolStripMenuItem.Size = new Size(180, 22);
+            agregarToolStripMenuItem.Size = new Size(125, 22);
             agregarToolStripMenuItem.Text = "Agregar";
             agregarToolStripMenuItem.Click += agregarToolStripMenuItem_Click;
             // 
             // modificarToolStripMenuItem
             // 
             modificarToolStripMenuItem.Name = "modificarToolStripMenuItem";
-            modificarToolStripMenuItem.Size = new Size(180, 22);
+            modificarToolStripMenuItem.Size = new Size(125, 22);
             modificarToolStripMenuItem.Text = "Modificar";
             modificarToolStripMenuItem.Click += modificarToolStripMenuItem_Click;
             // 
             // eliminarToolStripMenuItem
             // 
             eliminarToolStripMenuItem.Name = "eliminarToolStripMenuItem";
-            eliminarToolStripMenuItem.Size = new Size(180, 22);
+            eliminarToolStripMenuItem.Size = new Size(125, 22);
             eliminarToolStripMenuItem.Text = "Eliminar";
             eliminarToolStripMenuItem.Click += eliminarToolStripMenuItem_Click;
             // 
@@ -304,6 +305,7 @@
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
