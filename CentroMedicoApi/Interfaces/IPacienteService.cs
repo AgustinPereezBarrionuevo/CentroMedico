@@ -9,12 +9,5 @@ namespace CentroMedicoApi.Interfaces
         Task<Paciente> AddAsync(Paciente paciente);
         Task UpdateAsync(Paciente paciente);
         Task DeleteAsync(int id);
-
-        IEnumerable<Paciente> GetAll();
-        Paciente GetById(int id);      
-        void Delete(int id);
-
-        Paciente Add(Paciente paciente);
-
     }
 }

@@ -1,8 +1,7 @@
 ﻿using CentroMedicoApi.Data;
 using CentroMedicoApi.Interfaces;
 using CentroMedicoApi.Models;
-using Microsoft.EntityFrameworkCore;
-
+using Microsoft.EntityFrameworkCore; 
 
 namespace CentroMedicoApi.Services
 {

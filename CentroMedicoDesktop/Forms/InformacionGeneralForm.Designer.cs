@@ -37,7 +37,6 @@
             dgvTurnos = new DataGridView();
             dgvProfesionales = new DataGridView();
             dgvCentros = new DataGridView();
-
             btnActualizar = new Button();
 
             tabControl1 = new TabControl();
