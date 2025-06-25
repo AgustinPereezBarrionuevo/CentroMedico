@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CentroMedicoDesktop.Models
+namespace CentroMedicoDesktop.models
 {
     internal class Turno
     {

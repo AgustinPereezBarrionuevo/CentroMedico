@@ -7,6 +7,9 @@ namespace CentroMedicoApi.Interfaces
         IEnumerable<Turno> GetAll();
 
         Turno Add(Turno turno);
-        
+
+        Turno GetById(int id);
+        Turno Update(int id, Turno actualizado);
+        void Delete(int id);
     }
 }

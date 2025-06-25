@@ -7,5 +7,9 @@ namespace CentroMedicoApi.Interfaces
         IEnumerable<Profesional> GetAll();
 
         Profesional Add (Profesional profesional);
+
+        Profesional GetById(int id);
+        Profesional Update(int id, Profesional actualizado);
+        void Delete(int id);
     }
 }

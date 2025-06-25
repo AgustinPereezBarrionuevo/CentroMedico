@@ -1,5 +1,6 @@
 ﻿using CentroMedicoApi.Interfaces;
 using CentroMedicoApi.Models;
+using CentroMedicoApi.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CentroMedicoApi.Controllers
@@ -26,6 +27,32 @@ namespace CentroMedicoApi.Controllers
         {
             var nuevo = _pacienteService.Add(paciente);
             return CreatedAtAction(nameof(GetAll), new { id = nuevo.Id }, nuevo);
+        }
+
+        [HttpPut("{id}")]
+        public ActionResult<Paciente> Update(int id, [FromBody] Paciente pacienteActualizado)
+        {
+            var paciente = _pacienteService.GetById(id);
+            if (paciente == null)
+                return NotFound();
+
+            paciente.Nombre = pacienteActualizado.Nombre;
+            paciente.Dni = pacienteActualizado.Dni;
+            paciente.Email = pacienteActualizado.Email;
+
+            return Ok(paciente);
+        }
+
+
+        [HttpDelete("{id}")]
+        public ActionResult Delete(int id)
+        {
+            var paciente = _pacienteService.GetById(id);
+            if (paciente == null)
+                return NotFound();
+
+            _pacienteService.Delete(id);
+            return NoContent();
         }
     }
 }
