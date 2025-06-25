@@ -53,32 +53,8 @@ namespace CentroMedicoApi.Services
             _context.Profesionales.Remove(existing);
             await _context.SaveChangesAsync();
             return true;
-
-        public Profesional GetById(int id)
-        {
-            return _profesionales.FirstOrDefault(c => c.Id == id);
         }
 
-        public Profesional Update(int id, Profesional actualizado)
-        {
-            var existente = GetById(id);
-            if (existente == null)
-                return null;
-
-            existente.Nombre = actualizado.Nombre;
-            existente.Especialidad = actualizado.Especialidad;
-            existente.Matricula = actualizado.Matricula;
-
-            return existente;
-        }
-
-        public void Delete(int id)
-        {
-            var profesional = GetById(id);
-            if (profesional != null)
-            {
-                _profesionales.Remove(profesional);
-            }
-        }
+       
     }
 }

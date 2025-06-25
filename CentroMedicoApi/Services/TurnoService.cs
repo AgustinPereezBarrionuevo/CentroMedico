@@ -54,32 +54,7 @@ namespace CentroMedicoApi.Services
             _context.Turnos.Remove(existing);
             await _context.SaveChangesAsync();
             return true;
-
-        public Turno GetById(int id)
-        {
-            return _turnos.FirstOrDefault(t => t.Id == id);
         }
 
-        public Turno Update(int id, Turno actualizado)
-        {
-            var existente = GetById(id);
-            if (existente == null)
-                return null;
-
-            existente.PacienteId = actualizado.PacienteId;
-            existente.ProfesionalId = actualizado.ProfesionalId;
-            existente.FechaHora = actualizado.FechaHora;
-            existente.Estado = actualizado.Estado;
-
-            return existente;
-        }
-
-        public void Delete(int id)
-        {
-            var turno = GetById(id);
-            if (turno != null)
-                _turnos.Remove(turno);
-
-        }
-    }
+     }
 }

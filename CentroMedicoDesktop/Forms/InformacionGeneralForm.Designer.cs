@@ -37,7 +37,6 @@
             dgvTurnos = new DataGridView();
             dgvProfesionales = new DataGridView();
             dgvCentros = new DataGridView();
-            btnActualizar = new Button();
 
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
@@ -233,7 +232,6 @@
             btnActualizar.TabIndex = 4;
             btnActualizar.Text = "Actualizar Datos";
             btnActualizar.UseVisualStyleBackColor = false;
-            btnActualizar.Click += button1_Click;
             // 
             // tabControl1
             // 
@@ -365,7 +363,7 @@
             btnEliminarPaciente.TabIndex = 2;
             btnEliminarPaciente.Text = "ELIMINAR";
             btnEliminarPaciente.UseVisualStyleBackColor = false;
-            btnEliminarPaciente.Click += btnEliminarPaciente_Click;
+           
             // 
             // btnActualizarPaciente
             // 
@@ -380,7 +378,7 @@
             btnActualizarPaciente.TabIndex = 1;
             btnActualizarPaciente.Text = "EDITAR";
             btnActualizarPaciente.UseVisualStyleBackColor = false;
-            btnActualizarPaciente.Click += btnActualizarPaciente_Click;
+       
 
             // 
             // InformacionGeneralForm

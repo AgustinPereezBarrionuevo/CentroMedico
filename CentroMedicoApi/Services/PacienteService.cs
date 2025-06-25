@@ -48,21 +48,5 @@ namespace CentroMedicoApi.Services
             await _context.SaveChangesAsync();
         }
 
-        public Paciente GetById(int id)
-        {
-            return _pacientes.FirstOrDefault(p => p.Id == id);
-        }
-
-
-        public void Delete(int id)
-        {
-            var paciente = GetById(id);
-            if (paciente != null)
-            {
-                _pacientes.Remove(paciente);
-            }
-        }
-
-
     }
 }
