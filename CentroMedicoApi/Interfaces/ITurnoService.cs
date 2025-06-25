@@ -4,9 +4,10 @@ namespace CentroMedicoApi.Interfaces
 {
     public interface ITurnoService
     {
-        IEnumerable<Turno> GetAll();
-
-        Turno Add(Turno turno);
-        
+        Task<IEnumerable<Turno>> GetAllAsync();
+        Task<Turno> GetByIdAsync(int id);
+        Task<Turno> AddAsync(Turno turno);
+        Task<bool> UpdateAsync(Turno turno);
+        Task<bool> DeleteAsync(int id);
     }
 }

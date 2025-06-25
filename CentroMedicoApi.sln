@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35327.3
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CentroMedicoApi", "CentroMedicoApi\CentroMedicoApi.csproj", "{5814AE9F-62D6-40EE-880D-1DCF2368BC04}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CentroMedicoApi", "CentroMedicoApi\CentroMedicoApi.csproj", "{5814AE9F-62D6-40EE-880D-1DCF2368BC04}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CentroMedicoDesktop", "CentroMedicoDesktop\CentroMedicoDesktop.csproj", "{58247A3F-9787-4B88-A6AF-BDBB3E06AB99}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CentroMedicoDesktop", "CentroMedicoDesktop\CentroMedicoDesktop.csproj", "{58247A3F-9787-4B88-A6AF-BDBB3E06AB99}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

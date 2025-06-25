@@ -1,23 +1,50 @@
-﻿using CentroMedicoApi.Interfaces;
+﻿using CentroMedicoApi.Data;
+using CentroMedicoApi.Interfaces;
 using CentroMedicoApi.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace CentroMedicoApi.Services
 {
     public class PacienteService : IPacienteService
     {
-        private static readonly List<Paciente> _pacientes = new List<Paciente>();
-        private static int _nextId = 1;
+        private readonly CentroMedicoContext _context;
 
-        public IEnumerable<Paciente> GetAll()
+        public PacienteService(CentroMedicoContext context)
         {
-            return _pacientes;
+            _context = context;
         }
 
-        public Paciente Add(Paciente paciente)
+        public async Task<IEnumerable<Paciente>> GetAllAsync()
         {
-            paciente.Id = _nextId++;
-            _pacientes.Add(paciente);
+            return await _context.Pacientes.ToListAsync();
+        }
+
+        public async Task<Paciente> AddAsync(Paciente paciente)
+        {
+            _context.Pacientes.Add(paciente);
+            await _context.SaveChangesAsync();
             return paciente;
+        }
+
+        public async Task<Paciente?> GetByIdAsync(int id)
+        {
+            return await _context.Pacientes.FindAsync(id);
+        }
+
+        public async Task DeleteAsync(int id)
+        {
+            var paciente = await _context.Pacientes.FindAsync(id);
+            if (paciente != null)
+            {
+                _context.Pacientes.Remove(paciente);
+                await _context.SaveChangesAsync();
+            }
+        }
+
+        public async Task UpdateAsync(Paciente paciente)
+        {
+            _context.Pacientes.Update(paciente);
+            await _context.SaveChangesAsync();
         }
     }
 }

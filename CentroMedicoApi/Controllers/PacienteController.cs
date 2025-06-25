@@ -1,5 +1,6 @@
 ﻿using CentroMedicoApi.Interfaces;
 using CentroMedicoApi.Models;
+using CentroMedicoApi.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CentroMedicoApi.Controllers
@@ -16,16 +17,34 @@ namespace CentroMedicoApi.Controllers
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<Paciente>> GetAll()
+        public async Task<ActionResult<IEnumerable<Paciente>>> Get()
         {
-            return Ok(_pacienteService.GetAll());
+            var pacientes = await _pacienteService.GetAllAsync();
+            return Ok(pacientes);
         }
 
         [HttpPost]
-        public ActionResult<Paciente> Add(Paciente paciente)
+        public async Task<ActionResult<Paciente>> Post(Paciente paciente)
         {
-            var nuevo = _pacienteService.Add(paciente);
-            return CreatedAtAction(nameof(GetAll), new { id = nuevo.Id }, nuevo);
+            var nuevo = await _pacienteService.AddAsync(paciente);
+            return CreatedAtAction(nameof(Get), new { id = nuevo.Id }, nuevo);
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Put(int id, Paciente paciente)
+        {
+            if (id != paciente.Id)
+                return BadRequest();
+
+            await _pacienteService.UpdateAsync(paciente);
+            return NoContent();
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            await _pacienteService.DeleteAsync(id);
+            return NoContent();
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using CentroMedicoApi.Interfaces;
 using CentroMedicoApi.Models;
+using CentroMedicoApi.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CentroMedicoApi.Controllers
@@ -8,24 +9,49 @@ namespace CentroMedicoApi.Controllers
     [Route("api/[controller]")]
     public class ProfesionalController : ControllerBase
     {
-        private readonly IProfesionalService _profesionalService;
+        private readonly IProfesionalService _service;
 
-        public ProfesionalController(IProfesionalService profesionalService)
+        public ProfesionalController(IProfesionalService service)
         {
-            _profesionalService = profesionalService;
+            _service = service;
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<Profesional>> GetAll()
+        public async Task<IEnumerable<Profesional>> Get() => await _service.GetAllAsync();
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Profesional>> GetById(int id)
         {
-            return Ok(_profesionalService.GetAll());
+            var profesional = await _service.GetByIdAsync(id);
+            if (profesional == null) return NotFound();
+            return profesional;
         }
 
         [HttpPost]
-        public ActionResult<Profesional> Add(Profesional profesional)
+        public async Task<ActionResult<Profesional>> Post(Profesional profesional)
         {
-            var nuevo = _profesionalService.Add(profesional);
-            return CreatedAtAction(nameof(GetAll), new { id = nuevo.Id }, nuevo);
+            var created = await _service.AddAsync(profesional);
+            return CreatedAtAction(nameof(GetById), new { id = created.Id }, created);
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Put(int id, Profesional profesional)
+        {
+            if (id != profesional.Id) return BadRequest();
+
+            var updated = await _service.UpdateAsync(profesional);
+            if (!updated) return NotFound();
+
+            return NoContent();
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var deleted = await _service.DeleteAsync(id);
+            if (!deleted) return NotFound();
+
+            return NoContent();
         }
     }
 }

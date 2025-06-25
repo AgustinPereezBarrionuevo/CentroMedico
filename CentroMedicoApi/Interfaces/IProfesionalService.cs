@@ -4,8 +4,10 @@ namespace CentroMedicoApi.Interfaces
 {
     public interface IProfesionalService
     {
-        IEnumerable<Profesional> GetAll();
-
-        Profesional Add (Profesional profesional);
+        Task<IEnumerable<Profesional>> GetAllAsync();
+        Task<Profesional> GetByIdAsync(int id);
+        Task<Profesional> AddAsync(Profesional profesional);
+        Task<bool> UpdateAsync(Profesional profesional);
+        Task<bool> DeleteAsync(int id);
     }
 }

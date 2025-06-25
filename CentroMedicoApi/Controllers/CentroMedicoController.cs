@@ -1,5 +1,6 @@
 ﻿using CentroMedicoApi.Interfaces;
 using CentroMedicoApi.Models;
+using CentroMedicoApi.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CentroMedicoApi.Controllers
@@ -8,24 +9,50 @@ namespace CentroMedicoApi.Controllers
     [Route("api/[controller]")]
     public class CentroMedicoController : ControllerBase
     {
-        private readonly ICentroMedicoService _centroService;
+        private readonly ICentroMedicoService _service;
 
-        public CentroMedicoController(ICentroMedicoService centroService)
+        public CentroMedicoController(ICentroMedicoService service)
         {
-            _centroService = centroService;
+            _service = service;
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<CentroMedico>> GetAll()
+        public async Task<IEnumerable<CentroMedico>> Get() => await _service.GetAllAsync();
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<CentroMedico>> GetById(int id)
         {
-            return Ok(_centroService.GetAll());
+            var centro = await _service.GetByIdAsync(id);
+            if (centro == null) return NotFound();
+            return centro;
         }
 
         [HttpPost]
-        public ActionResult<CentroMedico> Add(CentroMedico centro)
+        public async Task<ActionResult<CentroMedico>> Post(CentroMedico centroMedico)
         {
-            var nuevo = _centroService.Add(centro);
-            return CreatedAtAction(nameof(GetAll), new { id = nuevo.Id }, nuevo);
+            var created = await _service.AddAsync(centroMedico);
+            return CreatedAtAction(nameof(GetById), new { id = created.Id }, created);
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Put(int id, CentroMedico centroMedico)
+        {
+            if (id != centroMedico.Id) return BadRequest();
+
+            var updated = await _service.UpdateAsync(centroMedico);
+            if (!updated) return NotFound();
+
+            return NoContent();
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var deleted = await _service.DeleteAsync(id);
+            if (!deleted) return NotFound();
+
+            return NoContent();
         }
     }
+
 }
