@@ -426,9 +426,9 @@
         kDH08hxetkkef6ji/nHHD7dz/N536M0nhFiZlpb/D0iKxFUmjznhAAAAAElFTkSuQmCC
 </value>
   </data>
-=======
+
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
->>>>>>> 1180917e3681d575638bed515d97e3a9e9e74b55
+
   <data name="$this.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAB4AAAAOJCAIAAABzgKhKAAABB2lDQ1BJQ0MgUHJvZmlsZQAAKM9jYGA8
@@ -436,11 +436,11 @@
         BMgWSYewNUDsJAjbBsQuLykoAbIDQOyikCBnIDsFyNZIR2InIbGTC4pA6nuAbJvcnNJkhLsZeFLzQoOB
         NAcQyzAUMwQxuDM4gfwPUZK/iIHB4isDA/MEhFjSTAaG7a0MDBK3EGIqCxgY+FsYGLadR4ghwqQgsSgR
         LMQCxExpaQwMn5YzMPBGMjAIX2Bg4IqGBQQOtymA3ebOkA+E6Qw5DKlAEU+GPIZkBj0gy4jBgMGQwQwA
-<<<<<<< HEAD
+
         ptY/P1N/5B4AAAAJcEhZcwAACwwAAAsMAT9AIsgAAP6vSURBVHhe7P0HdxzXlehvn07ImTmJkqycLcuS
-=======
+
         ptY/P1N/5B4AAAAJcEhZcwAACxEAAAsRAX9kX5EAAP6vSURBVHhe7P0HdxzXlehvn07ImTmJkqycLcuS
->>>>>>> 1180917e3681d575638bed515d97e3a9e9e74b55
+
         Ldnje8dBnpn7Bd65lkgi50jknDon5AyQIMFMipLD3P+3e/eu3b1xelejqwPAJKz1WzXVhapCo8GRzUfH
         u5RqrMEaalS9UV2NqqFqVXWtulZru1rrvILlfVfr+h5fwsEkVdeZs1+ry/u+uuC7athyLiPnFcx+FbPF
         M27VrKpbY13TuorZE8OTa+pUbfw9V9fYamod1Rje7eo1eGlrbFAN9aqx3tXRljc67AyHCzc2TmztlM4t
