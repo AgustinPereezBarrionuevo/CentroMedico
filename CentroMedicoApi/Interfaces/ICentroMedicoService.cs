@@ -4,7 +4,6 @@ namespace CentroMedicoApi.Interfaces
 {
     public interface ICentroMedicoService
     {
-
         Task<IEnumerable<CentroMedico>> GetAllAsync();
         Task<CentroMedico> GetByIdAsync(int id);
         Task<CentroMedico> AddAsync(CentroMedico centroMedico);

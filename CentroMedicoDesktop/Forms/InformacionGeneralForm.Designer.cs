@@ -37,13 +37,11 @@
             dgvTurnos = new DataGridView();
             dgvProfesionales = new DataGridView();
             dgvCentros = new DataGridView();
-
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
             tabPage2 = new TabPage();
             tabPage3 = new TabPage();
             tabPage4 = new TabPage();
-
             menuStrip1 = new MenuStrip();
             toolStripMenuItem1 = new ToolStripMenuItem();
             salirToolStripMenuItem = new ToolStripMenuItem();
@@ -52,10 +50,6 @@
             modificarToolStripMenuItem = new ToolStripMenuItem();
             eliminarToolStripMenuItem = new ToolStripMenuItem();
             toolStripMenuItem3 = new ToolStripMenuItem();
-
-            btnEliminarPaciente = new Button();
-            btnActualizarPaciente = new Button();
-
             ((System.ComponentModel.ISupportInitialize)dgvPacientes).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvTurnos).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvProfesionales).BeginInit();
@@ -65,10 +59,7 @@
             tabPage2.SuspendLayout();
             tabPage3.SuspendLayout();
             tabPage4.SuspendLayout();
-
             menuStrip1.SuspendLayout();
-
-
             SuspendLayout();
             // 
             // dgvPacientes
@@ -174,7 +165,6 @@
             // 
             // tabControl1
             // 
-
             tabControl1.Controls.Add(tabPage1);
             tabControl1.Controls.Add(tabPage2);
             tabControl1.Controls.Add(tabPage3);
@@ -220,67 +210,6 @@
             // 
             // tabPage4
             // 
-
-            btnActualizar.BackColor = Color.FromArgb(74, 144, 226);
-            btnActualizar.FlatAppearance.BorderSize = 0;
-            btnActualizar.FlatStyle = FlatStyle.Flat;
-            btnActualizar.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnActualizar.ForeColor = Color.White;
-            btnActualizar.Location = new Point(593, 12);
-            btnActualizar.Name = "btnActualizar";
-            btnActualizar.Size = new Size(115, 23);
-            btnActualizar.TabIndex = 4;
-            btnActualizar.Text = "Actualizar Datos";
-            btnActualizar.UseVisualStyleBackColor = false;
-            // 
-            // tabControl1
-            // 
-            tabControl1.Controls.Add(tabPage1);
-            tabControl1.Controls.Add(tabPage2);
-            tabControl1.Controls.Add(tabPage3);
-            tabControl1.Controls.Add(tabPage4);
-            tabControl1.Location = new Point(337, 41);
-            tabControl1.Name = "tabControl1";
-            tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(682, 347);
-            tabControl1.TabIndex = 9;
-            // 
-            // tabPage1
-            // 
-            tabPage1.Controls.Add(dgvPacientes);
-            tabPage1.Location = new Point(4, 24);
-            tabPage1.Name = "tabPage1";
-            tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(674, 319);
-            tabPage1.TabIndex = 0;
-            tabPage1.Text = "PACIENTES";
-            tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // tabPage2
-            // 
-            tabPage2.Controls.Add(dgvCentros);
-            tabPage2.Location = new Point(4, 24);
-            tabPage2.Name = "tabPage2";
-            tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(674, 319);
-            tabPage2.TabIndex = 1;
-            tabPage2.Text = "CENTRO MEDICOS";
-            tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // tabPage3
-            // 
-            tabPage3.Controls.Add(dgvProfesionales);
-            tabPage3.Location = new Point(4, 24);
-            tabPage3.Name = "tabPage3";
-            tabPage3.Padding = new Padding(3);
-            tabPage3.Size = new Size(674, 319);
-            tabPage3.TabIndex = 2;
-            tabPage3.Text = "PROFESIONALES";
-            tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // tabPage4
-            // 
-
             tabPage4.Controls.Add(dgvTurnos);
             tabPage4.Location = new Point(4, 24);
             tabPage4.Name = "tabPage4";
@@ -290,7 +219,6 @@
             tabPage4.Text = "TURNOS";
             tabPage4.UseVisualStyleBackColor = true;
             // 
-
             // menuStrip1
             // 
             menuStrip1.Items.AddRange(new ToolStripItem[] { toolStripMenuItem1, toolStripMenuItem2, toolStripMenuItem3 });
@@ -349,37 +277,6 @@
             toolStripMenuItem3.Size = new Size(87, 20);
             toolStripMenuItem3.Text = "Actualizar";
             toolStripMenuItem3.Click += toolStripMenuItem3_Click;
-
-            // btnEliminarPaciente
-            // 
-            btnEliminarPaciente.BackColor = Color.FromArgb(74, 144, 226);
-            btnEliminarPaciente.FlatAppearance.BorderSize = 0;
-            btnEliminarPaciente.FlatStyle = FlatStyle.Flat;
-            btnEliminarPaciente.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnEliminarPaciente.ForeColor = Color.White;
-            btnEliminarPaciente.Location = new Point(895, 394);
-            btnEliminarPaciente.Name = "btnEliminarPaciente";
-            btnEliminarPaciente.Size = new Size(101, 39);
-            btnEliminarPaciente.TabIndex = 2;
-            btnEliminarPaciente.Text = "ELIMINAR";
-            btnEliminarPaciente.UseVisualStyleBackColor = false;
-           
-            // 
-            // btnActualizarPaciente
-            // 
-            btnActualizarPaciente.BackColor = Color.FromArgb(74, 144, 226);
-            btnActualizarPaciente.FlatAppearance.BorderSize = 0;
-            btnActualizarPaciente.FlatStyle = FlatStyle.Flat;
-            btnActualizarPaciente.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnActualizarPaciente.ForeColor = Color.White;
-            btnActualizarPaciente.Location = new Point(377, 394);
-            btnActualizarPaciente.Name = "btnActualizarPaciente";
-            btnActualizarPaciente.Size = new Size(104, 39);
-            btnActualizarPaciente.TabIndex = 1;
-            btnActualizarPaciente.Text = "EDITAR";
-            btnActualizarPaciente.UseVisualStyleBackColor = false;
-       
-
             // 
             // InformacionGeneralForm
             // 
@@ -389,16 +286,9 @@
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1380, 634);
-
             Controls.Add(tabControl1);
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
-
-            Controls.Add(btnEliminarPaciente);
-            Controls.Add(tabControl1);
-            Controls.Add(btnActualizarPaciente);
-            Controls.Add(btnActualizar);
-
             Name = "InformacionGeneralForm";
             Text = "InformacionGeneralForm";
             Load += InformacionGeneralForm_Load;
@@ -411,10 +301,8 @@
             tabPage2.ResumeLayout(false);
             tabPage3.ResumeLayout(false);
             tabPage4.ResumeLayout(false);
-
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
-
             ResumeLayout(false);
         }
 
@@ -424,15 +312,11 @@
         private DataGridView dgvTurnos;
         private DataGridView dgvProfesionales;
         private DataGridView dgvCentros;
-
-        private Button btnActualizar;
-
         private TabControl tabControl1;
         private TabPage tabPage1;
         private TabPage tabPage2;
         private TabPage tabPage3;
         private TabPage tabPage4;
-
         private MenuStrip menuStrip1;
         private ToolStripMenuItem toolStripMenuItem1;
         private ToolStripMenuItem toolStripMenuItem2;
@@ -441,9 +325,5 @@
         private ToolStripMenuItem agregarToolStripMenuItem;
         private ToolStripMenuItem modificarToolStripMenuItem;
         private ToolStripMenuItem eliminarToolStripMenuItem;
-
-        private Button btnEliminarPaciente;
-        private Button btnActualizarPaciente;
-
     }
 }

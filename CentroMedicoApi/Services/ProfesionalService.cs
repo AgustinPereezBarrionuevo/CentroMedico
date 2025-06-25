@@ -31,7 +31,6 @@ namespace CentroMedicoApi.Services
             return profesional;
         }
 
-
         public async Task<bool> UpdateAsync(Profesional profesional)
         {
             var existing = await _context.Profesionales.FindAsync(profesional.Id);
@@ -54,7 +53,5 @@ namespace CentroMedicoApi.Services
             await _context.SaveChangesAsync();
             return true;
         }
-
-       
     }
 }

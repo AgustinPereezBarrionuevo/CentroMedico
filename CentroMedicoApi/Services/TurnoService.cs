@@ -1,7 +1,8 @@
 ﻿using CentroMedicoApi.Data;
 using CentroMedicoApi.Interfaces;
 using CentroMedicoApi.Models;
-using Microsoft.EntityFrameworkCore; 
+using Microsoft.EntityFrameworkCore;
+
 
 namespace CentroMedicoApi.Services
 {
@@ -31,7 +32,6 @@ namespace CentroMedicoApi.Services
             return turno;
         }
 
-
         public async Task<bool> UpdateAsync(Turno turno)
         {
             var existing = await _context.Turnos.FindAsync(turno.Id);
@@ -55,6 +55,5 @@ namespace CentroMedicoApi.Services
             await _context.SaveChangesAsync();
             return true;
         }
-
-     }
+    }
 }
