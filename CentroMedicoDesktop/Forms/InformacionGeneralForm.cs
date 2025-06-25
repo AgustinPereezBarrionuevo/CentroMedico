@@ -9,10 +9,15 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Net.Http; 
 using System.Net.Http.Json;
+<<<<<<< HEAD
 using Microsoft.VisualBasic;
 using CentroMedicoDesktop.models;
 
 
+=======
+using CentroMedicoApi.Models;
+using Microsoft.VisualBasic;
+>>>>>>> 1180917e3681d575638bed515d97e3a9e9e74b55
 
 namespace CentroMedicoDesktop.Forms
 {
@@ -152,8 +157,335 @@ namespace CentroMedicoDesktop.Forms
         }
 
         private async Task ActualizarPaciente()
+<<<<<<< HEAD
         {
             var filaSeleccionada = dgvPacientes.CurrentRow;
+=======
+        {
+            var filaSeleccionada = dgvPacientes.CurrentRow;
+
+            if (int.TryParse(filaSeleccionada.Cells["Id"].Value?.ToString(), out int id))
+            {
+                // Obtener valores actuales
+                string nombreActual = filaSeleccionada.Cells["Nombre"].Value?.ToString();
+                string dniActual = filaSeleccionada.Cells["Dni"].Value?.ToString();
+                string emailActual = filaSeleccionada.Cells["Email"].Value?.ToString();
+
+                // Mostrar InputBox para editar
+                string nuevoNombre = Interaction.InputBox("Nuevo nombre:", "Editar Paciente", nombreActual);
+                string nuevoDni = Interaction.InputBox("Nuevo DNI:", "Editar Paciente", dniActual);
+                string nuevoEmail = Interaction.InputBox("Nuevo Email:", "Editar Paciente", emailActual);
+
+                // Validación mínima
+                if (string.IsNullOrWhiteSpace(nuevoNombre) || string.IsNullOrWhiteSpace(nuevoDni) || string.IsNullOrWhiteSpace(nuevoEmail))
+                {
+                    MessageBox.Show("Todos los campos son obligatorios.");
+                    return;
+                }
+
+                var pacienteActualizado = new Paciente
+                {
+                    Id = id,
+                    Nombre = nuevoNombre,
+                    Dni = nuevoDni,
+                    Email = nuevoEmail
+                };
+
+                using (HttpClient client = new HttpClient())
+                {
+                    client.BaseAddress = new Uri("https://localhost:7099/");
+                    var response = await client.PutAsJsonAsync($"api/Paciente/{id}", pacienteActualizado);
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        MessageBox.Show("Paciente actualizado correctamente.");
+                        await CargarPacientesAsync();
+                    }
+                    else
+                    {
+                        string error = await response.Content.ReadAsStringAsync();
+                        MessageBox.Show($"Error al actualizar paciente: {response.StatusCode}. {error}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("ID de paciente inválido. Asegúrate de seleccionar una fila existente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private async Task ActualizarProfesional()
+        {
+            if (dgvProfesionales.CurrentRow != null)
+            {
+                var fila = dgvProfesionales.CurrentRow;
+
+                if (int.TryParse(fila.Cells["Id"].Value?.ToString(), out int id))
+                {
+                    string nombreActual = fila.Cells["Nombre"].Value?.ToString();
+                    string especialidadActual = fila.Cells["Especialidad"].Value?.ToString();
+                    string matriculaActual = fila.Cells["Matricula"].Value.ToString();
+
+                    string nuevoNombre = Interaction.InputBox("Nuevo nombre del profesional:", "Editar Profesional", nombreActual);
+                    string nuevaEspecialidad = Interaction.InputBox("Nueva especialidad:", "Editar Profesional", especialidadActual);
+                    string nuevaMatricula = Interaction.InputBox("Nueva matricula:", "Editar Profesional", matriculaActual);
+
+                    if (string.IsNullOrWhiteSpace(nuevoNombre) || string.IsNullOrWhiteSpace(nuevaEspecialidad))
+                    {
+                        MessageBox.Show("Todos los campos son obligatorios.");
+                        return;
+                    }
+
+                    var profesionalActualizado = new Profesional
+                    {
+                        Id = id,
+                        Nombre = nuevoNombre,
+                        Especialidad = nuevaEspecialidad,
+                        Matricula = nuevaMatricula
+                    };
+
+                    using (HttpClient client = new HttpClient())
+                    {
+                        client.BaseAddress = new Uri("https://localhost:7099/");
+                        var response = await client.PutAsJsonAsync($"api/Profesional/{id}", profesionalActualizado);
+
+                        if (response.IsSuccessStatusCode)
+                        {
+                            MessageBox.Show("Profesional actualizado correctamente.");
+                            await CargarProfesionalesAsync();
+                        }
+                        else
+                        {
+                            string error = await response.Content.ReadAsStringAsync();
+                            MessageBox.Show($"Error al actualizar profesional: {response.StatusCode}. {error}");
+                        }
+                    }
+                }
+            }
+        }
+
+        private async Task ActualizarCentroMedico()
+        {
+            var fila = dgvCentros.CurrentRow;
+
+            if (int.TryParse(fila.Cells["Id"].Value?.ToString(), out int id))
+            {
+                string nombreActual = fila.Cells["Nombre"].Value?.ToString();
+                string direccionActual = fila.Cells["Direccion"].Value?.ToString();
+                string telefonoActual = fila.Cells["Telefono"].Value?.ToString();
+
+                string nuevoNombre = Interaction.InputBox("Nuevo nombre del centro médico:", "Editar Centro Médico", nombreActual);
+                string nuevaDireccion = Interaction.InputBox("Nueva dirección:", "Editar Centro Médico", direccionActual);
+                string nuevoTelefono = Interaction.InputBox("Nuevo telefono:", "Editar Centro Médico", telefonoActual);
+
+                if (string.IsNullOrWhiteSpace(nuevoNombre) || string.IsNullOrWhiteSpace(nuevaDireccion))
+                {
+                    MessageBox.Show("Todos los campos son obligatorios.");
+                    return;
+                }
+
+                var centroActualizado = new CentroMedico
+                {
+                    Id = id,
+                    Nombre = nuevoNombre,
+                    Direccion = nuevaDireccion,
+                    Telefono = nuevoTelefono
+                };
+
+                using (HttpClient client = new HttpClient())
+                {
+                    client.BaseAddress = new Uri("https://localhost:7099/");
+                    var response = await client.PutAsJsonAsync($"api/CentroMedico/{id}", centroActualizado);
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        MessageBox.Show("Centro médico actualizado correctamente.");
+                        await CargarCentrosAsync();
+                    }
+                    else
+                    {
+                        string error = await response.Content.ReadAsStringAsync();
+                        MessageBox.Show($"Error al actualizar centro médico: {response.StatusCode}. {error}");
+                    }
+                }
+            }
+        }
+
+        private async Task ActualizarTurno()
+        {
+            if (dgvTurnos.CurrentRow != null)
+            {
+                var fila = dgvTurnos.CurrentRow;
+
+                if (int.TryParse(fila.Cells["Id"].Value?.ToString(), out int id))
+                {
+                    string pacienteIdActual = fila.Cells["PacienteId"].Value?.ToString();
+                    string profesionalIdActual = fila.Cells["ProfesionalId"].Value?.ToString();
+                    string fechaHoraActual = fila.Cells["FechaHora"].Value?.ToString(); // formato esperado: "2025-05-28 14:30"
+                    string estadoActual = fila.Cells["Estado"].Value.ToString();
+
+                    string nuevoPacienteId = Interaction.InputBox("Nuevo ID del paciente:", "Editar Turno", pacienteIdActual);
+                    string nuevoProfesionalId = Interaction.InputBox("Nuevo ID del profesional:", "Editar Turno", profesionalIdActual); 
+                    string nuevaFechaHoraStr = Interaction.InputBox("Nueva fecha y hora (formato: yyyy-MM-dd HH:mm):", "Editar Turno", fechaHoraActual);
+                    string nuevoEstado = Interaction.InputBox("Nuevo Estado del paciente:", "Editar Turno", estadoActual);
+
+                    if (!int.TryParse(nuevoPacienteId, out int pacienteId) ||
+                        !int.TryParse(nuevoProfesionalId, out int profesionalId) ||
+                        !DateTime.TryParse(nuevaFechaHoraStr, out DateTime nuevaFechaHora))
+                      
+                    {
+                        MessageBox.Show("Algún dato es inválido. Revisa los valores ingresados.");
+                        return;
+                    }
+
+                    var turnoActualizado = new Turno
+                    {
+                        Id = id,
+                        PacienteId = pacienteId,
+                        ProfesionalId = profesionalId,
+                        FechaHora = nuevaFechaHora,
+                        Estado = nuevoEstado
+                    };
+
+                    using (HttpClient client = new HttpClient())
+                    {
+                        client.BaseAddress = new Uri("https://localhost:7099/");
+                        var response = await client.PutAsJsonAsync($"api/Turno/{id}", turnoActualizado);
+
+                        if (response.IsSuccessStatusCode)
+                        {
+                            MessageBox.Show("Turno actualizado correctamente.");
+                            await CargarTurnosAsync();
+                        }
+                        else
+                        {
+                            string error = await response.Content.ReadAsStringAsync();
+                            MessageBox.Show($"Error al actualizar turno: {response.StatusCode}. {error}");
+                        }
+                    }
+                }
+            }
+        }
+
+        private async Task EliminarPaciente()
+        {
+            if (dgvPacientes.CurrentRow != null)
+            {
+                var filaSeleccionada = dgvPacientes.CurrentRow;
+
+                if (int.TryParse(filaSeleccionada.Cells["Id"].Value?.ToString(), out int id))
+                {
+                    var confirmacion = MessageBox.Show(
+                        $"¿Estás seguro de que querés eliminar al paciente con ID {id}?",
+                        "Confirmar eliminación",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Warning
+                    );
+
+                    if (confirmacion == DialogResult.Yes)
+                    {
+                        using (HttpClient client = new HttpClient())
+                        {
+                            client.BaseAddress = new Uri("https://localhost:7099/");
+                            var response = await client.DeleteAsync($"api/Paciente/{id}");
+
+                            if (response.IsSuccessStatusCode)
+                            {
+                                MessageBox.Show("Paciente eliminado correctamente.");
+                                await CargarPacientesAsync();
+                            }
+                            else
+                            {
+                                string error = await response.Content.ReadAsStringAsync();
+                                MessageBox.Show($"Error al eliminar paciente: {response.StatusCode}. {error}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("ID de paciente inválido. Seleccioná una fila válida.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+        }
+
+        private async Task EliminarProfesional()
+        {
+            if (dgvProfesionales.CurrentRow?.DataBoundItem is Profesional seleccionado)
+            {
+                using (HttpClient client = new HttpClient())
+                {
+                    client.BaseAddress = new Uri("https://localhost:7099/");
+
+                    var response = await client.DeleteAsync($"api/Profesional/{seleccionado.Id}");
+                    if (response.IsSuccessStatusCode)
+                    {
+                        MessageBox.Show("Profesional eliminado correctamente.");
+                        await CargarProfesionalesAsync();
+                    }
+                    else
+                    {
+                        MessageBox.Show($"Error al eliminar: {response.ReasonPhrase}");
+                    }
+                }
+            }
+        }
+
+        private async Task EliminarCentroMedico()
+        {
+            if (dgvCentros.CurrentRow?.DataBoundItem is CentroMedico seleccionado)
+            {
+                using (HttpClient client = new HttpClient())
+                {
+                    client.BaseAddress = new Uri("https://localhost:7099/");
+
+                    var response = await client.DeleteAsync($"api/CentroMedico/{seleccionado.Id}");
+                    if (response.IsSuccessStatusCode)
+                    {
+                        MessageBox.Show("Centro médico eliminado correctamente.");
+                        await CargarCentrosAsync();
+                    }
+                    else
+                    {
+                        MessageBox.Show($"Error al eliminar: {response.ReasonPhrase}");
+                    }
+                }
+            }
+        }
+
+        private async Task EliminarTurno()
+        {
+            if (dgvTurnos.CurrentRow?.DataBoundItem is Turno seleccionado)
+            {
+                using (HttpClient client = new HttpClient())
+                {
+                    client.BaseAddress = new Uri("https://localhost:7099/");
+
+                    var response = await client.DeleteAsync($"api/Turno/{seleccionado.Id}");
+                    if (response.IsSuccessStatusCode)
+                    {
+                        MessageBox.Show("Turno eliminado correctamente.");
+                        await CargarTurnosAsync();
+                    }
+                    else
+                    {
+                        MessageBox.Show($"Error al eliminar: {response.ReasonPhrase}");
+                    }
+                }
+            }
+        }
+
+
+
+
+        private async void button1_Click(object sender, EventArgs e)
+        {
+            await CargarPacientesAsync();
+            await CargarTurnosAsync();
+            await CargarProfesionalesAsync();
+            await CargarCentrosAsync();
+
+>>>>>>> 1180917e3681d575638bed515d97e3a9e9e74b55
 
             if (int.TryParse(filaSeleccionada.Cells["Id"].Value?.ToString(), out int id))
             {
@@ -739,5 +1071,62 @@ namespace CentroMedicoDesktop.Forms
         {
             Application.Exit();
         }
+
+        private async void btnActualizarPaciente_Click(object sender, EventArgs e)
+        {
+            var tabSeleccionada = tabControl1.SelectedTab.Text;
+
+            switch (tabSeleccionada)
+            {
+                case "PACIENTES":
+                    await ActualizarPaciente();
+                    break;
+
+                case "CENTRO MEDICOS":
+                    await ActualizarCentroMedico();
+                    break;
+
+                case "PROFESIONALES":
+                    await ActualizarProfesional();
+                    break;
+
+                case "TURNOS":
+                    await ActualizarTurno();
+                    break;
+
+                default:
+                    MessageBox.Show("Seleccioná una pestaña válida.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    break;
+            }
+        }
+
+        private async void btnEliminarPaciente_Click(object sender, EventArgs e)
+        {
+            var tabSeleccionada = tabControl1.SelectedTab.Text;
+
+            switch (tabSeleccionada)
+            {
+                case "PACIENTES":
+                    await EliminarPaciente();
+                    break;
+
+                case "CENTRO MEDICOS":
+                    await EliminarCentroMedico();
+                    break;
+
+                case "PROFESIONALES":
+                    await EliminarProfesional();
+                    break;
+
+                case "TURNOS":
+                    await EliminarTurno();
+                    break;
+
+                default:
+                    MessageBox.Show("Seleccioná una pestaña válida.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    break;
+            }
+        }
+
     }
 }

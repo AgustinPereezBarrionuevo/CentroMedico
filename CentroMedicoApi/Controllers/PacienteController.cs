@@ -46,5 +46,31 @@ namespace CentroMedicoApi.Controllers
             await _pacienteService.DeleteAsync(id);
             return NoContent();
         }
+
+        [HttpPut("{id}")]
+        public ActionResult<Paciente> Update(int id, [FromBody] Paciente pacienteActualizado)
+        {
+            var paciente = _pacienteService.GetById(id);
+            if (paciente == null)
+                return NotFound();
+
+            paciente.Nombre = pacienteActualizado.Nombre;
+            paciente.Dni = pacienteActualizado.Dni;
+            paciente.Email = pacienteActualizado.Email;
+
+            return Ok(paciente);
+        }
+
+
+        [HttpDelete("{id}")]
+        public ActionResult Delete(int id)
+        {
+            var paciente = _pacienteService.GetById(id);
+            if (paciente == null)
+                return NotFound();
+
+            _pacienteService.Delete(id);
+            return NoContent();
+        }
     }
 }

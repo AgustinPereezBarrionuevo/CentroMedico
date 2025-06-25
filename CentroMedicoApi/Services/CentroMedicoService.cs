@@ -29,6 +29,7 @@ public class CentroMedicoService : ICentroMedicoService
         return centroMedico;
     }
 
+<<<<<<< HEAD
     public async Task<bool> UpdateAsync(CentroMedico centroMedico)
     {
         var existing = await _context.CentrosMedicos.FindAsync(centroMedico.Id);
@@ -50,5 +51,42 @@ public class CentroMedicoService : ICentroMedicoService
         _context.CentrosMedicos.Remove(existing);
         await _context.SaveChangesAsync();
         return true;
+=======
+            if (centro.Id == 0)
+            {
+                centro.Id = _nextId++; 
+            }
+            _centros.Add(centro);
+                return centro;
+          }
+
+        public CentroMedico GetById(int id)
+        {
+            return _centros.FirstOrDefault(c => c.Id == id);
+        }
+
+        public CentroMedico Update(int id, CentroMedico actualizado)
+        {
+            var existente = GetById(id);
+            if (existente == null)
+                return null;
+
+            existente.Nombre = actualizado.Nombre;
+            existente.Direccion = actualizado.Direccion;
+            existente.Telefono = actualizado.Telefono;
+
+            return existente;
+        }
+
+        public void Delete(int id)
+        {
+            var centro = GetById(id);
+            if (centro != null)
+            {
+                _centros.Remove(centro);
+            }
+        }
+
+>>>>>>> 1180917e3681d575638bed515d97e3a9e9e74b55
     }
 }

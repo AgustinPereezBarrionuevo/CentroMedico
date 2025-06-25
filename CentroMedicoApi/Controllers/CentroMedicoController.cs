@@ -53,6 +53,41 @@ namespace CentroMedicoApi.Controllers
 
             return NoContent();
         }
+
+        [HttpPut("{id}")]
+        public ActionResult<CentroMedico> Update(int id, [FromBody] CentroMedico centroMedicoActualizado)
+        {
+            var centro = _centroService.GetById(id);
+            if (centro == null)
+                return NotFound();
+
+            centro.Nombre = centroMedicoActualizado.Nombre;
+            centro.Direccion = centroMedicoActualizado.Direccion;
+            centro.Telefono = centroMedicoActualizado.Telefono;
+
+            return Ok(centro);
+        }
+
+
+        [HttpDelete("{id}")]
+        public ActionResult Delete(int id)
+        {
+            var centro = _centroService.GetById(id);
+            if (centro == null)
+                return NotFound();
+
+            _centroService.Delete(id);
+            return NoContent();
+        }
+
+
     }
 
+<<<<<<< HEAD
+=======
+     
+
+    
+
+>>>>>>> 1180917e3681d575638bed515d97e3a9e9e74b55
 }
