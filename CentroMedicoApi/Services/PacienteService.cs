@@ -26,7 +26,7 @@ namespace CentroMedicoApi.Services
             return paciente;
         }
 
-<<<<<<< HEAD
+
         public async Task<Paciente?> GetByIdAsync(int id)
         {
             return await _context.Pacientes.FindAsync(id);
@@ -47,7 +47,7 @@ namespace CentroMedicoApi.Services
             _context.Pacientes.Update(paciente);
             await _context.SaveChangesAsync();
         }
-=======
+
         public Paciente GetById(int id)
         {
             return _pacientes.FirstOrDefault(p => p.Id == id);
@@ -64,6 +64,5 @@ namespace CentroMedicoApi.Services
         }
 
 
->>>>>>> 1180917e3681d575638bed515d97e3a9e9e74b55
     }
 }

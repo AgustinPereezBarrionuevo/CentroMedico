@@ -13,3 +13,4 @@ namespace CentroMedicoApi.Data
         public DbSet<Turno> Turnos { get; set; }
     }
 }
+

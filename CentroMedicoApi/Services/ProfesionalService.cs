@@ -31,7 +31,7 @@ namespace CentroMedicoApi.Services
             return profesional;
         }
 
-<<<<<<< HEAD
+
         public async Task<bool> UpdateAsync(Profesional profesional)
         {
             var existing = await _context.Profesionales.FindAsync(profesional.Id);
@@ -53,7 +53,7 @@ namespace CentroMedicoApi.Services
             _context.Profesionales.Remove(existing);
             await _context.SaveChangesAsync();
             return true;
-=======
+
         public Profesional GetById(int id)
         {
             return _profesionales.FirstOrDefault(c => c.Id == id);
@@ -79,7 +79,6 @@ namespace CentroMedicoApi.Services
             {
                 _profesionales.Remove(profesional);
             }
->>>>>>> 1180917e3681d575638bed515d97e3a9e9e74b55
         }
     }
 }

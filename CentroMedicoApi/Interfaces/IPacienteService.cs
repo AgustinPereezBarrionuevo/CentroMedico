@@ -4,18 +4,17 @@ namespace CentroMedicoApi.Interfaces
 {
     public interface IPacienteService
     {
-<<<<<<< HEAD
         Task<IEnumerable<Paciente>> GetAllAsync();
         Task<Paciente?> GetByIdAsync(int id);
         Task<Paciente> AddAsync(Paciente paciente);
         Task UpdateAsync(Paciente paciente);
         Task DeleteAsync(int id);
-=======
+
         IEnumerable<Paciente> GetAll();
         Paciente GetById(int id);      
         void Delete(int id);
 
         Paciente Add(Paciente paciente);
->>>>>>> 1180917e3681d575638bed515d97e3a9e9e74b55
+
     }
 }

@@ -37,16 +37,15 @@
             dgvTurnos = new DataGridView();
             dgvProfesionales = new DataGridView();
             dgvCentros = new DataGridView();
-<<<<<<< HEAD
-=======
+
             btnActualizar = new Button();
->>>>>>> 1180917e3681d575638bed515d97e3a9e9e74b55
+
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
             tabPage2 = new TabPage();
             tabPage3 = new TabPage();
             tabPage4 = new TabPage();
-<<<<<<< HEAD
+
             menuStrip1 = new MenuStrip();
             toolStripMenuItem1 = new ToolStripMenuItem();
             salirToolStripMenuItem = new ToolStripMenuItem();
@@ -55,10 +54,10 @@
             modificarToolStripMenuItem = new ToolStripMenuItem();
             eliminarToolStripMenuItem = new ToolStripMenuItem();
             toolStripMenuItem3 = new ToolStripMenuItem();
-=======
+
             btnEliminarPaciente = new Button();
             btnActualizarPaciente = new Button();
->>>>>>> 1180917e3681d575638bed515d97e3a9e9e74b55
+
             ((System.ComponentModel.ISupportInitialize)dgvPacientes).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvTurnos).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvProfesionales).BeginInit();
@@ -68,10 +67,10 @@
             tabPage2.SuspendLayout();
             tabPage3.SuspendLayout();
             tabPage4.SuspendLayout();
-<<<<<<< HEAD
+
             menuStrip1.SuspendLayout();
-=======
->>>>>>> 1180917e3681d575638bed515d97e3a9e9e74b55
+
+
             SuspendLayout();
             // 
             // dgvPacientes
@@ -177,7 +176,7 @@
             // 
             // tabControl1
             // 
-<<<<<<< HEAD
+
             tabControl1.Controls.Add(tabPage1);
             tabControl1.Controls.Add(tabPage2);
             tabControl1.Controls.Add(tabPage3);
@@ -223,7 +222,7 @@
             // 
             // tabPage4
             // 
-=======
+
             btnActualizar.BackColor = Color.FromArgb(74, 144, 226);
             btnActualizar.FlatAppearance.BorderSize = 0;
             btnActualizar.FlatStyle = FlatStyle.Flat;
@@ -284,7 +283,7 @@
             // 
             // tabPage4
             // 
->>>>>>> 1180917e3681d575638bed515d97e3a9e9e74b55
+
             tabPage4.Controls.Add(dgvTurnos);
             tabPage4.Location = new Point(4, 24);
             tabPage4.Name = "tabPage4";
@@ -294,7 +293,7 @@
             tabPage4.Text = "TURNOS";
             tabPage4.UseVisualStyleBackColor = true;
             // 
-<<<<<<< HEAD
+
             // menuStrip1
             // 
             menuStrip1.Items.AddRange(new ToolStripItem[] { toolStripMenuItem1, toolStripMenuItem2, toolStripMenuItem3 });
@@ -353,7 +352,7 @@
             toolStripMenuItem3.Size = new Size(87, 20);
             toolStripMenuItem3.Text = "Actualizar";
             toolStripMenuItem3.Click += toolStripMenuItem3_Click;
-=======
+
             // btnEliminarPaciente
             // 
             btnEliminarPaciente.BackColor = Color.FromArgb(74, 144, 226);
@@ -383,7 +382,7 @@
             btnActualizarPaciente.Text = "EDITAR";
             btnActualizarPaciente.UseVisualStyleBackColor = false;
             btnActualizarPaciente.Click += btnActualizarPaciente_Click;
->>>>>>> 1180917e3681d575638bed515d97e3a9e9e74b55
+
             // 
             // InformacionGeneralForm
             // 
@@ -393,16 +392,16 @@
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1380, 634);
-<<<<<<< HEAD
+
             Controls.Add(tabControl1);
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
-=======
+
             Controls.Add(btnEliminarPaciente);
             Controls.Add(tabControl1);
             Controls.Add(btnActualizarPaciente);
             Controls.Add(btnActualizar);
->>>>>>> 1180917e3681d575638bed515d97e3a9e9e74b55
+
             Name = "InformacionGeneralForm";
             Text = "InformacionGeneralForm";
             Load += InformacionGeneralForm_Load;
@@ -415,11 +414,10 @@
             tabPage2.ResumeLayout(false);
             tabPage3.ResumeLayout(false);
             tabPage4.ResumeLayout(false);
-<<<<<<< HEAD
+
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
-=======
->>>>>>> 1180917e3681d575638bed515d97e3a9e9e74b55
+
             ResumeLayout(false);
         }
 
@@ -429,16 +427,15 @@
         private DataGridView dgvTurnos;
         private DataGridView dgvProfesionales;
         private DataGridView dgvCentros;
-<<<<<<< HEAD
-=======
+
         private Button btnActualizar;
->>>>>>> 1180917e3681d575638bed515d97e3a9e9e74b55
+
         private TabControl tabControl1;
         private TabPage tabPage1;
         private TabPage tabPage2;
         private TabPage tabPage3;
         private TabPage tabPage4;
-<<<<<<< HEAD
+
         private MenuStrip menuStrip1;
         private ToolStripMenuItem toolStripMenuItem1;
         private ToolStripMenuItem toolStripMenuItem2;
@@ -447,9 +444,9 @@
         private ToolStripMenuItem agregarToolStripMenuItem;
         private ToolStripMenuItem modificarToolStripMenuItem;
         private ToolStripMenuItem eliminarToolStripMenuItem;
-=======
+
         private Button btnEliminarPaciente;
         private Button btnActualizarPaciente;
->>>>>>> 1180917e3681d575638bed515d97e3a9e9e74b55
+
     }
 }

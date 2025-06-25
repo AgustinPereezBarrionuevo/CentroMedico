@@ -29,7 +29,6 @@ public class CentroMedicoService : ICentroMedicoService
         return centroMedico;
     }
 
-<<<<<<< HEAD
     public async Task<bool> UpdateAsync(CentroMedico centroMedico)
     {
         var existing = await _context.CentrosMedicos.FindAsync(centroMedico.Id);
@@ -51,7 +50,7 @@ public class CentroMedicoService : ICentroMedicoService
         _context.CentrosMedicos.Remove(existing);
         await _context.SaveChangesAsync();
         return true;
-=======
+
             if (centro.Id == 0)
             {
                 centro.Id = _nextId++; 

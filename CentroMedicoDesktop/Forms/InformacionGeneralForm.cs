@@ -9,15 +9,10 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Net.Http; 
 using System.Net.Http.Json;
-<<<<<<< HEAD
 using Microsoft.VisualBasic;
 using CentroMedicoDesktop.models;
-
-
-=======
 using CentroMedicoApi.Models;
 using Microsoft.VisualBasic;
->>>>>>> 1180917e3681d575638bed515d97e3a9e9e74b55
 
 namespace CentroMedicoDesktop.Forms
 {
@@ -157,10 +152,10 @@ namespace CentroMedicoDesktop.Forms
         }
 
         private async Task ActualizarPaciente()
-<<<<<<< HEAD
+
         {
             var filaSeleccionada = dgvPacientes.CurrentRow;
-=======
+
         {
             var filaSeleccionada = dgvPacientes.CurrentRow;
 
@@ -485,7 +480,7 @@ namespace CentroMedicoDesktop.Forms
             await CargarProfesionalesAsync();
             await CargarCentrosAsync();
 
->>>>>>> 1180917e3681d575638bed515d97e3a9e9e74b55
+
 
             if (int.TryParse(filaSeleccionada.Cells["Id"].Value?.ToString(), out int id))
             {
